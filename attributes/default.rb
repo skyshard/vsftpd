@@ -313,3 +313,5 @@ default[:vsftpd][:user_sub_token] = "$USER"
 # This option represents a directory which vsftpd will try to change into after
 # a local (i.e. non-anonymous) login. Failure is silently ignored.
 default[:vsftpd][:local_root] = nil
+
+default[:vsftpd][:allow_writeable_chroot] = nil
