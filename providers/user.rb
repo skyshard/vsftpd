@@ -1,5 +1,10 @@
 #use_inline_resources
 
+# Support whyrun
+def whyrun_supported?
+  true
+end
+
 include Chef::DSL::IncludeRecipe
 
 action :add do
