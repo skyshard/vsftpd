@@ -1,7 +1,7 @@
 package "libpam-pwdfile"
 package "openssl"
 
-template "/etc/pam.d/vsftpd" do
+template "/etc/pam.d/vsftpd.virtual" do
   source "vsftpd-pam.erb"
   owner "root"
   group "root"
