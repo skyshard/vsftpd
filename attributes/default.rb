@@ -16,10 +16,10 @@ default['vsftpd']['dirmessage_enable'] = false
 # to be totally unprivileged. Note that this should be a dedicated user,
 # rather than nobody. The user nobody tends to be used for rather
 # a lot of important things on most machines.
-default['vsftpd']['nopriv_user'] = "nobody"
+default['vsftpd']['nopriv_user'] = 'nobody'
 #
 # This string is the name of the PAM service vsftpd will use.
-default['vsftpd']['pam_service_name'] = "vsftpd"
+default['vsftpd']['pam_service_name'] = 'vsftpd'
 #
 # Like the listen parameter, except vsftpd will listen on an IPv6 socket
 # instead of an IPv4 one. This parameter and the listen parameter
@@ -37,13 +37,11 @@ default['vsftpd']['pasv'] = true
 #
 # The minium port to allocate for PASV style data connections.
 # Can be used to specify a narrow port range to assist firewalling.
-default['vsftpd']['pasv_min_port'] = "1024"
+default['vsftpd']['pasv_min_port'] = '1024'
 #
 # The maximum port to allocate for PASV style data connections.
 # Can be used to specify a narrow port range to assist firewalling.
-default['vsftpd']['pasv_max_port'] = "1048"
-
-
+default['vsftpd']['pasv_max_port'] = '1048'
 
 ### PERMISSIONS
 #
@@ -66,7 +64,7 @@ default['vsftpd']['write_enable'] = false
 # The value that the umask for file creation is set to for local users. NOTE!
 # If you want to specify octal values, remember the "0" prefix otherwise the
 # value will be treated as a base 10 integer!
-default['vsftpd']['local_umask'] = "022"
+default['vsftpd']['local_umask'] = '022'
 #
 # This option represents a directory  which  vsftpd  will  try  to
 # change  into  after  an  anonymous  login.  Failure  is silently
@@ -95,13 +93,11 @@ default['vsftpd']['chown_uploads'] = false
 # This is the name of the user who is given ownership of anonymously
 # uploaded files. This option is only relevant if another option,
 # chown_uploads, is set.
-default['vsftpd']['chown_username'] = "ftp"
+default['vsftpd']['chown_username'] = 'ftp'
 #
 # When enabled, allows use of the SITE CHMOD command. NOTE! This only applies to
 # local users. Anonymous users never get to use SITE CHMOD.
 default['vsftpd']['chmod_enable'] = true
-
-
 
 ### CHROOT OPTIONS
 #
@@ -156,16 +152,16 @@ default['vsftpd']['ssl_enable'] = false
 # For a discussion of the consequences, see
 # http://scarybeastsecurity.blogspot.com/2009/02/vsftpd-210-released.html
 default['vsftpd']['require_ssl_reuse'] = false
-default['vsftpd']['ssl_cert_path'] = "/etc/ssl/certs"
-default['vsftpd']['ssl_private_key_path'] = "/etc/ssl/private"
-default['vsftpd']['ssl_cert_name'] = "vsftpd"
-default['vsftpd']['ssl_cert_cookbook'] = "vsftpd"
+default['vsftpd']['ssl_cert_path'] = '/etc/ssl/certs'
+default['vsftpd']['ssl_private_key_path'] = '/etc/ssl/private'
+default['vsftpd']['ssl_cert_name'] = 'vsftpd'
+default['vsftpd']['ssl_cert_cookbook'] = 'vsftpd'
 #
 # This option can be used to select which SSL ciphers vsftpd will allow for
 # encrypted SSL connections. See the ciphers man page for further details. Note
 # that restricting ciphers can be a useful security precaution as it prevents
 # malicious remote parties forcing a cipher which they have found problems with.
-default['vsftpd']['ssl_ciphers'] = "DES-CBC3-SHA"
+default['vsftpd']['ssl_ciphers'] = 'DES-CBC3-SHA'
 # If enabled, vsftpd will request (but not necessarily require; see require_cert) a
 # certificate on incoming SSL connections.  Normally this should not cause any trouble at
 # all, but IBM zOS seems to have issues. (New in v2.0.7).
@@ -207,13 +203,13 @@ default['vsftpd']['syslog_enable'] = false
 # the option dual_log_enable.  One further complication if you have set
 # syslog_enable, then this file is not written and output is sent to the system
 # log instead.
-default['vsftpd']['vsftpd_log_file'] = "/var/log/vsftpd.log"
+default['vsftpd']['vsftpd_log_file'] = '/var/log/vsftpd.log'
 #
 # This option is the name of the file to which we write the wu-ftpd style
 # transfer log. The transfer log is only written if the option xferlog_enable
 # is set, along with xferlog_std_format. Alternatively, it is written
 # if you have set the option dual_log_enable.
-default['vsftpd']['xferlog_file'] = "/var/log/xferlog"
+default['vsftpd']['xferlog_file'] = '/var/log/xferlog'
 #
 # If enabled, the transfer log file will be written in standard xferlog format,
 # as used by wu-ftpd. This is useful because you can reuse existing
@@ -225,7 +221,6 @@ default['vsftpd']['xferlog_std_format'] = false
 # When enabled, all FTP requests and responses are logged, providing the option
 # xferlog_std_format is not enabled. Useful for debugging.
 default['vsftpd']['log_ftp_protocol'] = false
-
 
 ### SESSION AND SECURITY OPTIONS
 #
@@ -266,15 +261,13 @@ default['vsftpd']['max_per_ip'] = 0
 # displayed as "ftp".
 default['vsftpd']['hide_ids'] = true
 
-
-
 ### VIRTUAL USER OPTIONS
 #
 default['vsftpd']['virtual_users_enable'] = false
 #
 # See the boolean setting guest_enable for a description of what constitutes
 # a guest login. This setting is the real username which guest users are mapped to.
-default['vsftpd']['guest_username'] = "ftp"
+default['vsftpd']['guest_username'] = 'ftp'
 #
 # If enabled, all non-anonymous logins are classed as "guest" logins.
 # A guest login is remapped to the user specified in the guest_username setting.
@@ -289,10 +282,10 @@ default['vsftpd']['guest_enable'] = false
 # For example, many settings only prior to the user's session being started.
 # Examples of settings which will not affect any behviour on a per-user basis
 # include listen_address, banner_file, max_per_ip, max_clients, xferlog_file, etc.
-default['vsftpd']['user_config_dir'] = "/etc/vsftpd/users"
+default['vsftpd']['user_config_dir'] = '/etc/vsftpd/users'
 #
 # Where should vsfptd pam.d look for user passwords
-default['vsftpd']['user_passwd_file'] = "/etc/vsftpd/.passwd"
+default['vsftpd']['user_passwd_file'] = '/etc/vsftpd/.passwd'
 #
 # If enabled, virtual users will use the same privileges as local users.
 # By default, virtual users will use the same privileges as anonymous users,
@@ -306,7 +299,7 @@ default['vsftpd']['virtual_use_local_privs'] = false
 # then when virtual user fred logs in, he will end up (usually chroot()'ed) in
 # the directory /home/virtual/fred. This option also takes affect if local_root
 # contains user_sub_token.
-default['vsftpd']['user_sub_token'] = "$USER"
+default['vsftpd']['user_sub_token'] = '$USER'
 #
 # This option represents a directory which vsftpd will try to change into after
 # a local (i.e. non-anonymous) login. Failure is silently ignored.

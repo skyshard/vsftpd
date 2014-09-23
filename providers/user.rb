@@ -15,13 +15,13 @@ action :add do
   end
 
   file ::File.join(node['vsftpd']['user_config_dir'], new_resource.user) do
-    owner "root"
-    group "root"
+    owner 'root'
+    group 'root'
     mode 0644
-    root = "local_root=#{new_resource.root.sub(%r!/\./.*!,'')}\n"
+    root = "local_root=#{new_resource.root.sub(%r{/\./.*}, '')}\n"
     user = "guest_username=#{new_resource.local_user}\n" unless new_resource.local_user.to_s.empty?
     content "#{root}#{user}"
-    notifies :restart, "service[vsftpd]"
+    notifies :restart, 'service[vsftpd]'
     new_resource.updated_by_last_action(true)
   end
 end
@@ -37,7 +37,7 @@ action :remove do
 
   file ::File.join(node['vsftpd']['user_config_dir'], new_resource.user) do
     action :delete
-    notifies :restart, "service[vsftpd]"
+    notifies :restart, 'service[vsftpd]'
     new_resource.updated_by_last_action(true)
   end
 end
