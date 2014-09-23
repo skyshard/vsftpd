@@ -11,6 +11,7 @@ action :add do
     user new_resource.user
     password new_resource.password
     type 'crypt'
+    new_resource.updated_by_last_action(true)
   end
 
   file ::File.join(node['vsftpd']['user_config_dir'], new_resource.user) do
@@ -21,6 +22,7 @@ action :add do
     user = "guest_username=#{new_resource.local_user}\n" unless new_resource.local_user.to_s.empty?
     content "#{root}#{user}"
     notifies :restart, "service[vsftpd]"
+    new_resource.updated_by_last_action(true)
   end
 end
 
@@ -30,11 +32,13 @@ action :remove do
   htpasswd "Remove vsftpd user #{new_resource.user}" do
     file node['vsftpd']['user_config_dir']
     user new_resource.user
+    new_resource.updated_by_last_action(true)
   end
 
   file ::File.join(node['vsftpd']['user_config_dir'], new_resource.user) do
     action :delete
     notifies :restart, "service[vsftpd]"
+    new_resource.updated_by_last_action(true)
   end
 end
 
