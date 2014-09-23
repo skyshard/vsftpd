@@ -1,4 +1,4 @@
-= DESCRIPTION:
+# DESCRIPTION
 
 Very Basic installation and configuration of vsftpd to support Secure (SSL) SFTP.
 
@@ -6,11 +6,11 @@ Uses pretty close to standard vsftpd.conf. Mainly turns on ssl and adds require_
 Will use ssl certificates you specify in attributes and put into the files/default directory or files that are already installed on target server.
 
 
-= REQUIREMENTS:
+# REQUIREMENTS
 
 Only tested on Ubuntu 10.04 and the vsftpd that comes from the standard apt sources at the time this cookbook was created. No attempt has been made to support other target platforms or versions of vsftpd.
 
-= ATTRIBUTES: 
+# ATTRIBUTES
 
 * vsftod[:chroot_local_user] - If set to 'YES', then the chroot_list_file (contents of vsftpd[:chroot_users]) will specify list of local users to NOT chroot their home directories. If set to "NO" the users in chroot_list_file will have their home directories chroot'd. Default: "YES"
 
@@ -24,9 +24,9 @@ Only tested on Ubuntu 10.04 and the vsftpd that comes from the standard apt sour
 
 * vsftpd[:use_ssl_certs_from_cookbook] - If set, you must have the ssl public and private cert files in the cookbook's files directory. Default: true
 
-= USAGE:
+# USAGE
 
-== SSL Certificates for secure ftp
+## SSL Certificates for secure ftp
 
 You will need to have SSL public certificate end up in the directory as specified by vsftpd[:ssl_cert_path] with the certificate basename specified by vsftpd[:ssl_certs_basename] and the suffix of .pem (defaults to /etc/ssl/certs/ftp.example.com.pem)
 
@@ -38,11 +38,11 @@ Or you can put the public/private files with the basename and suffix described a
 
 You should not use the example ftp.example.com.{pem,key} that are in files/default. They are there just for an example and testing.
 
-== Extra Configuration
+## Extra Configuration
 
 You can tweak the templates/default/vsftpd.conf to configure other aspects of vsftpd. Most of them are the default.
 
-= LICENSE and AUTHOR:
+# LICENSE and AUTHOR:
 
 Author:: Robert J. Berger (rberger+maintainer@ibd.com)
 
