@@ -5,7 +5,7 @@ end
 
 action :add do
   run_context.include_recipe 'htpasswd'
-  
+
   htpasswd "vsftpd password for user #{new_resource.user}" do
     file node['vsftpd']['user_passwd_file']
     user new_resource.user
@@ -13,7 +13,7 @@ action :add do
     type 'crypt'
   end
 
-  file ::File.join(node[:vsftpd][:user_config_dir], new_resource.user) do
+  file ::File.join(node['vsftpd']['user_config_dir'], new_resource.user) do
     owner "root"
     group "root"
     mode 0644
@@ -28,11 +28,11 @@ action :remove do
   run_context.include_recipe 'htpasswd'
 
   htpasswd "Remove vsftpd user #{new_resource.user}" do
-    file node[:vsftpd][:user_config_dir]
+    file node['vsftpd']['user_config_dir']
     user new_resource.user
   end
 
-  file ::File.join(node[:vsftpd][:user_config_dir], new_resource.user) do
+  file ::File.join(node['vsftpd']['user_config_dir'], new_resource.user) do
     action :delete
     notifies :restart, "service[vsftpd]"
   end
