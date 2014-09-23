@@ -9,6 +9,7 @@ template '/etc/vsftpd.conf' do
   owner 'root'
   group 'root'
   mode 0644
+  variables :config => node['vsftpd']['config']
   notifies :restart, 'service[vsftpd]', :delayed
 end
 
@@ -16,19 +17,6 @@ directory '/etc/vsftpd' do
   owner 'root'
   group 'root'
   mode 0755
-end
-
-directory node['vsftpd']['user_config_dir'] do
-  owner 'root'
-  group 'root'
-  mode 0755
-end
-
-file node['vsftpd']['user_passwd_file'] do
-  owner 'root'
-  group 'root'
-  mode 0600
-  action :create_if_missing
 end
 
 if node['vsftpd']['chroot_local_user'] || node['vsftpd']['chroot_list_enable']
