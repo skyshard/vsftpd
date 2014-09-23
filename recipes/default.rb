@@ -35,6 +35,4 @@ if node['vsftpd']['chroot_local_user'] || node['vsftpd']['chroot_list_enable']
   include_recipe 'vsftpd::chroot_users'
 end
 
-if node['vsftpd']['virtual_users_enable']
-  include_recipe 'vsftpd::virtual_users'
-end
+include_recipe 'vsftpd::virtual_users' if node['vsftpd']['virtual_users_enable']
