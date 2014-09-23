@@ -9,7 +9,7 @@ template "/etc/vsftpd.conf" do
   owner "root"
   group "root"
   mode 0644
-  notifies :restart, resources(:service => "vsftpd"), :delayed
+  notifies :restart, 'service[vsftpd]', :delayed
 end
 
 directory "/etc/vsftpd" do
