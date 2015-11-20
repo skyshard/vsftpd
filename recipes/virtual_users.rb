@@ -24,7 +24,7 @@ end
   end
   vsftpd_user u['name'] do
     action :add
-    username u['name']
+    user u['name']
     password u['password']
     root u['root']
     local_user u['local_user'] if u['local_user']
